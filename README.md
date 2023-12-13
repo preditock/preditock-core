@@ -1,2 +1,3 @@
-# predictock-core
+# preditock-core
+
 scrapping data, generate result
