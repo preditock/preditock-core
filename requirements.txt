@@ -1,4 +1,2 @@
-pinecone-client~=2.2.2
-python-dotenv~=1.0.0
-fastapi~=0.97.0
-uvicorn~=0.22.0
+beautifulsoup4
+lxml
