@@ -48,14 +48,16 @@ class NewsScraper:
 
     def crawl_news(self, search, start_pg, end_pg):
         urls = self.makeUrl(search, start_pg, end_pg)
-
+        print(urls)
         news_url = []
         for url in urls:
             url = self.articles_crawler(url)
             news_url.append(url)
-
+        
         news_url_1 = []
         self.makeList(news_url_1, news_url)
+
+        print(news_url_1)
 
         final_urls = [url for url in news_url_1 if "news.naver.com" in url]
 
