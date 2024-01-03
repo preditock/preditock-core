@@ -1,3 +1,4 @@
+from env.conf import News, PS
 import mysql.connector
 import os
 from dotenv import load_dotenv
@@ -24,11 +25,11 @@ class Table:
         pass
 
 class NewsTable(Table):
-    def insert(self, news):
+    def insert(self, news: News):
         query = """
         INSERT INTO news 
         (search_company, search_date, write_date, title, content, url, img_url, publisher, keyword, summary, user_id) 
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, CURRENT_TIMESTAMP(), %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
         values = news
         self.cursor.execute(query, values)
@@ -48,7 +49,7 @@ class NewsTable(Table):
         return {row[0]: row[1] for row in result} if result else {}
 
 class PsTable(Table):
-    def insert(self, ps):
+    def insert(self, ps: PS):
         query = """
         INSERT INTO ps 
         (news_id, company, score, user_id) 
