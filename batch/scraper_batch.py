@@ -1,12 +1,12 @@
 import os
 import sys
 from dotenv import load_dotenv
-from env.conf import News
+from config.conf import News
 from scraper.scraper import NewsScraper
 from db_handler.db_handler import NewsTable
 from typing import List
 
-load_dotenv('env/data.env')
+load_dotenv('config/data.env')
 sys.path.insert(0, os.getenv('device_path'))
 
 def crawl_news(search: str, start_pg: int, end_pg: int) -> List[News]:

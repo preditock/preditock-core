@@ -1,4 +1,4 @@
-from env.conf import News, PS
+from config.conf import News, PS
 import mysql.connector
 import os
 from dotenv import load_dotenv

@@ -4,7 +4,7 @@ import re
 from typing import List
 from datetime import datetime
 
-from env.conf import News
+from config.conf import News
 
 class NewsScraper:
     def __init__(self):
