@@ -1,17 +1,16 @@
 import os
 import sys
-from dotenv import load_dotenv
-from config.conf import News
-from scraper.scraper import NewsScraper
-from db_handler.db_handler import NewsTable
-from typing import List
 
-load_dotenv('config/data.env')
-sys.path.insert(0, os.getenv('device_path'))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+
+from config.conf import News
+from src.scraper.scraper import NewsScraper
+from src.db_handler.db_handler import NewsTable
+from typing import List
 
 def crawl_news(search: str, start_pg: int, end_pg: int) -> List[News]:
     scraper = NewsScraper()
-    urls = scraper.makeUrl(search, start_pg, end_pg)
+    urls = scraper.make_url(search, start_pg, end_pg)
     final_urls = scraper.process_urls(urls)
 
     return [scraper.process_each_url(url) for url in final_urls]
@@ -25,4 +24,5 @@ def save_news_to_db(company: str, page_start: int, page_end: int):
         news_table.insert(news)
 
 
-save_news_to_db("삼성전자", 1, 400)
+if __name__ == "__main__":
+    save_news_to_db("삼성전자", 100, 200)

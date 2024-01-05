@@ -1,7 +1,22 @@
-from collections import namedtuple
+from dataclasses import dataclass
+from typing import List, Optional, Union
 
-# 뉴스 데이터 모델 정의
-News = namedtuple('News', ['search_company', 'write_date', 'title', 'content', 'url', 'img_url', 'publisher', 'keyword', 'summary', 'user_id'])
+@dataclass
+class News:
+    search_company: str 
+    write_date: str
+    title: str
+    content: List[str]
+    url: str
+    publisher: str
+    keyword: List[str]
+    img_url: Optional[str] = None
+    summary: str = None
+    user_id: Union[str, int] = None
 
-# Ps 데이터 모델 정의
-PS = namedtuple('PS', ['news_id', 'company', 'score', 'user_id'])
+@dataclass
+class PS:
+    news_id: str
+    company: str
+    score: str
+    user_id: str
