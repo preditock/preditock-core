@@ -24,5 +24,5 @@ def save_news_to_db(company: str, page_start: int, page_end: int):
         news_table.insert(news)
 
 
-if __name__ == "__main__":
-    save_news_to_db("삼성전자", 100, 200)
+# if __name__ == "__main__":
+#     save_news_to_db("삼성전자", 100, 200)
